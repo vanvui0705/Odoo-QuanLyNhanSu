@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="medical_program_form_view" model="ir.ui.view">
+            <field name="name">medical.program.form.view</field>
+            <field name="model">medical.program</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+<!--                        <group>-->
+<!--                                <field name="employee"/>-->
+
+<!--                        </group>-->
+<!--                        <div class="oe_title">-->
+<!--                            <label for="name" string="Name" class="oe_edit_only"/>-->
+<!--                            <h1><field name="name" placeholder="e.g. Kittie"/></h1>-->
+<!--                        </div>-->
+
+                        <group>
+                            <group>
+                                <field name="code_health"/>
+                                <field name="Date_created"/>
+                            </group>
+                            <group>
+                                <field name="PHE"/>
+                                <field name="medical_examination_program_participated"/>
+                            </group>
+                        </group>
+<!--                        <notebook>-->
+<!--                            <page name="general_information" string="General Information">-->
+								<group>
+									<group>
+                                        <field name="medical_history"/>
+<!--										<field name="mobile_phone"/>-->
+<!--                                        <field name="work_email"/>-->
+									</group>
+									<group>
+									</group>
+								</group>
+<!--							</page>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="Job_Positions"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="Department"/>-->
+
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                        <notebook>-->
+<!--                        <page name="medical_program" string="Medical program">-->
+<!--                                                 <group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="code_health"/>-->
+<!--                                                        <field name="Date_created"/>-->
+<!--                                                        <field name="medical_history"/>-->
+<!--                                                    </group>-->
+<!--                                                    <group>-->
+<!--                                                        <field name="PHE"/>-->
+<!--                                                        <field name="medical_examination_program_participated"/>-->
+<!--                                                    </group>-->
+<!--                                                </group>-->
+<!--							</page>-->
+<!--                        </notebook>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="medical_program_tree_view" model="ir.ui.view">
+            <field name="name">medical.program.tree.view</field>
+            <field name="model">medical.program</field>
+            <field name="arch" type="xml">
+                <tree string="medical_program" default_order="create_date desc">
+<!--                    <field name="name"/>-->
+<!--                    <field name="Department"/>-->
+<!--                    <field name="birthday"/>-->
+<!--                    <field name="Job_Positions"/>-->
+<!--                    <field name="marital"/>-->
+<!--                    <field name="address"/>-->
+<!--                    <field name="mobile_phone"/>-->
+<!--                    <field name="work_email"/>-->
+<!--                    <field name="gender"/>-->
+                    <field name="employee"/>
+                    <field name="code_health"/>
+                    <field name="Date_created"/>
+                    <field name="PHE"/>
+                    <field name="medical_examination_program_participated"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_medical_program" model="ir.actions.act_window">
+            <field name="name">medical program</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.program</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('medical_program_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('medical_program_form_view')})]"/>
+        </record>
+
+        <menuitem id="emp_root_menu" name="EMPLOYEE MANAGER" sequence="1"/>
+<!--            <menuitem id="benefits_management_menu" name="Benefits management" parent="emp_root_menu" sequence="10"/>-->
+            <menuitem id="Evaluate_management_menu" name="Evaluate management" parent="emp_root_menu" sequence="10"/>
+                 <menuitem id="medical_program_menu" name="Medical program" parent="benefits_management_menu"
+                            action="action_medical_program" sequence="1"/>
+
+    </data>
+</odoo>
