@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="medical_history_form_view" model="ir.ui.view">
+            <field name="name">medical.history.form.view</field>
+            <field name="model">medical.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" string="Discount name:" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="e.g. Kittie"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="medical_history_id"/>
+                            </group>
+                            <group>
+                                <field name="Date"/>
+                            </group>
+                            <group>
+                                <field name="Location"/>
+                            </group>
+                            <group>
+                                <field name="Content"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="medical_history_tree_view" model="ir.ui.view">
+            <field name="name">medical.history.tree.view</field>
+            <field name="model">medical.history</field>
+            <field name="arch" type="xml">
+                <tree string="medical_history" default_order="create_date desc">
+                    <field name="Content"/>
+                    <field name="Date"/>
+                    <field name="Location"/>
+                    <field name="medical_history_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_medical_history" model="ir.actions.act_window">
+            <field name="name">medical.history</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.history</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('medical_history_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('medical_history_form_view')})]"/>
+        </record>
+
+    </data>
+</odoo>

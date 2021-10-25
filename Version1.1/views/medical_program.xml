@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="medical_program_form_view" model="ir.ui.view">
+            <field name="name">medical.program.form.view</field>
+            <field name="model">medical.program</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="employee" string="Employee" class="oe_edit_only"/>
+                            <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                                <field name="code_health"/>
+                                <field name="Date_created"/>
+                            </group>
+                            <group>
+                                <field name="PHE"/>
+                                <field name="medical_examination_program_participated"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="medical_history" string="Medical history">
+                            <group>
+
+                                <field name="medical_history"/>
+
+                            </group>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="medical_program_tree_view" model="ir.ui.view">
+            <field name="name">medical.program.tree.view</field>
+            <field name="model">medical.program</field>
+            <field name="arch" type="xml">
+                <tree string="medical_program" default_order="create_date desc">
+                    <field name="medical_history"/>
+                    <field name="employee"/>
+                    <field name="code_health"/>
+                    <field name="Date_created"/>
+                    <field name="PHE"/>
+                    <field name="medical_examination_program_participated"/>
+                    <field name="id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_medical_program" model="ir.actions.act_window">
+            <field name="name">medical program</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">medical.program</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('medical_program_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('medical_program_form_view')})]"/>
+
+        </record>
+    </data>
+</odoo>

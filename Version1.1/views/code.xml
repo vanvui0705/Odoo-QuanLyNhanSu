@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+    <data noupdate ="1">
+         <record id="educate_id" model="ir.sequence">
+             <field name="name">ID </field>
+             <field name="code">medical_program.id</field>
+             <field name="prefix">MDT</field>
+             <field name="padding">4</field>
+             <field name="company_id" eval="False"/>
+         </record>
+
+     </data>
+ </odoo>
