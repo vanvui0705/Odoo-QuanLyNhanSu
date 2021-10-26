@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="key_hr_form_view" model="ir.ui.view">
+            <field name="name">key.hr.form.view</field>
+            <field name="model">key.hr</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+<!--                        <div class="oe_title">-->
+<!--                            <label for="name" string="Discount name:" class="oe_edit_only"/>-->
+<!--                            <h1><field name="name" placeholder="e.g. Kittie"/></h1>-->
+<!--                        </div>-->
+                        <group>
+                            <group>
+                                <field name="key_hr_id"/>
+                            </group>
+                            <group>
+                               <field name="rate"/>
+                            </group>
+                            <group>
+                               <field name="Work_attitude"/>
+                            </group>
+
+                            <group>
+                                <field name="Work_productivity"/>
+                            </group>
+                            <group>
+                                <field name="Growth_at_work"/>
+                            </group>
+                            <group>
+                                <field name="absenteeism"/>
+                            </group>
+                            <group>
+                                <field name="recruiting"/>
+                            </group>
+                            <group>
+                                <field name="internal"/>
+                            </group>
+<!--                            <group>-->
+<!--                                <field name="ot"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="rule"/>-->
+<!--                            </group>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="key_hr_tree_view" model="ir.ui.view">
+            <field name="name">key.hr.tree.view</field>
+            <field name="model">key.hr</field>
+            <field name="arch" type="xml">
+                <tree string="key_hr" default_order="create_date desc">
+                         <field name="key_hr_id"/>
+                         <field name="rate"/>
+                         <field name="Work_attitude"/>
+                         <field name="Work_productivity"/>
+                         <field name="Growth_at_work"/>
+                         <field name="absenteeism"/>
+                         <field name="recruiting"/>
+                         <field name="internal"/>
+<!--                         <field name="ot"/>-->
+<!--                         <field name="rule"/>-->
+
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_key_hr" model="ir.actions.act_window">
+            <field name="name">key.hr</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">key.hr</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('key_hr_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('key_hr_form_view')})]"/>
+        </record>
+
+    </data>
+</odoo>
