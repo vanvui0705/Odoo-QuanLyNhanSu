@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+         <record id="training_employee_form_view" model="ir.ui.view">
+            <field name="name">training.employee.form.view</field>
+            <field name="model">training.employee</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                       <div class="oe_title">
+                            <label for="employee" string="Employee" class="oe_edit_only"/>
+                            <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
+                       </div>
+                       <div class="oe_sv">
+                           <group>
+                               <group>
+                                   <field name ="name"/>
+                                    <br>
+                                    </br>
+                                   <field name= "age"/>
+                                   <br>
+                                   </br>
+                                   <field name= "gender"/>
+                                   <br>
+                                   </br>
+                                   <field name ="skill"/>
+                                    <br>
+                                    </br>
+                                   <field name ="workexperience"/>
+                                    <br>
+                                    </br>
+                               </group>
+
+                               <group>
+                                    <field name= "email"/>
+                                   <br>
+                                   </br>
+                                    <field name= "address"/>
+                                   <br>
+                                   </br>
+                                </group>
+                               <field name= "note"/>
+                           </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="training_employee_tree_view" model="ir.ui.view">
+            <field name="name">training.employee.tree.view</field>
+            <field name="model">training.employee</field>
+            <field name="arch" type="xml">
+                <tree string="training_employee" default_order="create_date desc">
+                    <field name="employee"/>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="skill"/>
+                    <field name="workexperience"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_training_employee" model="ir.actions.act_window">
+            <field name="name">training employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.employee</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('training_employee_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('training_employee_form_view')})]"/>
+        </record>
+
+ <menuitem id="emp_root_menu" name="EMPLOYEE MANAGER" sequence="1"/>
+        <!--            <menuitem id="benefits_management_menu" name="Benefits management" parent="emp_root_menu" sequence="10"/>-->
+            <menuitem id="Evaluate_management_menu"
+                      name="Evaluate management"
+                      parent="emp_root_menu"
+                      sequence="10"/>
+                 <menuitem id="training_employee_menu"
+                           name="training employee"
+                           parent="Evaluate_management_menu"
+                           action="action_training_employee"
+                           sequence="1"/>
+    </data>
+</odoo>
