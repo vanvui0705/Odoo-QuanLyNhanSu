@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="finance_keypi_form_view" model="ir.ui.view">
+            <field name="name">finance.keypi.form.view</field>
+            <field name="model">finance.keypi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="id_bs"/>
+                            </group>
+                            <group>
+                                <field name="date_bs"/>
+                            </group>
+                            <group>
+                                <field name="time_startbs"/>
+                            </group>
+                            <group>
+                                <field name="time_endbs"/>
+                            </group>
+                            <group>
+                                <field name="Job_Positions"/>
+                            </group>
+                            <group>
+                                <field name="Department"/>
+                            </group>
+                            <group>
+                                <field name="objectives_bs"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="key_finance_information" string="KPI">
+                                <group name="bsn">
+                                    <group>
+                                        <field name="overtime"/>
+                                        <field name="attitude"/>
+                                    </group>
+                                    <group>
+                                        <field name="regulations"/>
+                                        <field name="report"/>
+                                        <field name="numberRP"/>
+                                    </group>
+                                    <group>
+                                        <field name="productivity"/>
+                                        <field name="target"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="key_finance_comment" string="Result">
+                                <group name="combs">
+                                    <group>
+                                        <field name="Comment_bs"/>
+                                        <field name="result_bs"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="finance_keypi_tree_view" model="ir.ui.view">
+            <field name="name">finance.keypi.tree.view</field>
+            <field name="model">finance.keypi</field>
+            <field name="arch" type="xml">
+                <tree string="finance_keypi" default_order="create_date desc">
+                    <field name="id_bs"/>
+                    <field name="date_bs"/>
+                    <field name="time_startbs"/>
+                    <field name="time_endbs"/>
+                    <field name="Job_Positions"/>
+                    <field name="Department"/>
+                    <field name="objectives_bs"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_finance_keypi" model="ir.actions.act_window">
+            <field name="name">Finance Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">finance.keypi</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('finance_keypi_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('finance_keypi_form_view')})]"/>
+        </record>
+
+        <menuitem id="emp_root_menu"
+                  name="EMPLOYEE MANAGER"
+                  sequence="1"/>
+        <menuitem id="evaluation_management_menu"
+                  name="Evaluation management"
+                  parent="emp_root_menu"
+                  sequence="10"/>
+        <menuitem id="finance_keypi_menu"
+                  name="Finance Department"
+                  parent="evaluation_management_menu"
+                  action="action_finance_keypi"
+                  sequence="1"/>
+    </data>
+</odoo>
