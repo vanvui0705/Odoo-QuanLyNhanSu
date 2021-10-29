@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_erp_erp,erp.erp,model_erp_erp,base.group_user,1,1,1,1
+access_employee,access_employee,model_employee,base.group_user,1,1,1,1
+access_medical_program,access_medical_program,model_medical_program,base.group_user,1,1,1,1
+access_medical_history,access_medical_history,model_medical_history,base.group_user,1,1,1,1
+access_social_insurance,access_social_insurance,model_social_insurance,base.group_user,1,1,1,1
+access_detail_insurance,access_detail_insurance,model_detail_insurance,base.group_user,1,1,1,1
