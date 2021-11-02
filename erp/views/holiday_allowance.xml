@@ -46,8 +46,8 @@
             <field name="model">holiday.allowance</field>
             <field name="arch" type="xml">
                 <tree string="holiday_allowance" default_order="create_date desc">
-                    <field name="employee"/>
                     <field name="id"/>
+                    <field name="employee"/>
                     <field name="assistant_holiday"/>
                     <field name="assistant_dateoff"/>
 

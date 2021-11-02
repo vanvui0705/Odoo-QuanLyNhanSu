@@ -13,6 +13,7 @@ class holiday_allowance(models.Model):
     assistant_dateoff = fields.One2many(comodel_name='assistant.dateoff',inverse_name='id')
 
 
+
 class assistant_holiday(models.Model):
         _name = "assistant.holiday"
         _description = ""

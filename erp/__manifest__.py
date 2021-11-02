@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-customer
 {
-    'name': "HR 10",
+    'name': "HR NHOM10",
     'summary': """ """,
     'description': """Managing employee information""",
     'author': "nhi",
@@ -21,10 +21,7 @@
         'views/code.xml',
         'views/medical_history.xml',
         'views/holiday_allowance.xml',
-        'views/business_keypi.xml',
-        'views/hr_keypi.xml',
-        'views/production_keypi.xml',
-        'views/finance_keypi.xml',
+        'views/kpi.xml',
         'views/menu.xml',
 
     ],

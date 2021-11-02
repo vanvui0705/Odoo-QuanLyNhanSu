@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="kpi_form_view" model="ir.ui.view">
+            <field name="name">kpi.form.view</field>
+            <field name="model">kpi</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="employee" string="Employee" class="oe_edit_only"/>
+                            <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
+                            <label for="employee" string="ID Employee" class="oe_edit_only"/>
+                            <field name="id_employee" />
+
+                        </div>
+<!--                        <group>-->
+<!--                            <field name="id_employee"  string="ID Employee"/>-->
+<!--                        </group>-->
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                                <field name="date_bs"/>
+                                <field name="objectives_bs"/>
+                            </group>
+                            <group>
+                                <field name="Job_Positions"/>
+                                <field name="Department"/>
+                                <field name="time_startbs"/>
+                                <field name="time_endbs"/>
+
+<!--                                <field name="medical_examination_program_participated"/>-->
+                            </group>
+                        </group>
+                      <group>
+                        <notebook>
+                     <page name="program_participated" string="Set of criteria 1">
+                            <group>
+
+                                <field name="set_of_criteria_1"/>
+                            </group>
+                           <group>
+                                <group>
+                                <field name="ot_bs"/>
+                                <field name="rule_bs"/>
+                                </group>
+                                <group>
+                                    <field name="Absenteeism_rate"/>
+                                    <field name="Work_attitude"/>
+                                </group>
+                           </group>
+                           <group>
+                                 <field name="Total_rating_score"/>
+                           </group>
+                     </page>
+                     <page name="medical_history" string="Set of criteria 2">
+                            <group>
+
+                                <field name="set_of_criteria_2"/>
+
+                            </group>
+                             <group>
+                                <group>
+                                <field name="ot_bs"/>
+                                <field name="rule_bs"/>
+                                </group>
+                                <group>
+                                    <field name="Absenteeism_rate"/>
+                                    <field name="Work_attitude"/>
+                                </group>
+                             </group>
+                             <group>
+                                 <field name="Total_rating_score"/>
+                             </group>
+                     </page>
+                     <page name="Department HR" string="Set of criteria 3">
+                            <group>
+                                <field name="set_of_criteria_3"/>
+                            </group>
+                         <group>
+                                <group>
+                                <field name="ot_bs"/>
+                                <field name="rule_bs"/>
+                                </group>
+                                <group>
+                                    <field name="Absenteeism_rate"/>
+                                    <field name="Work_attitude"/>
+                                </group>
+                         </group>
+                             <group>
+                                 <field name="Total_rating_score"/>
+                             </group>
+                      </page>
+              </notebook>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="kpi_tree_view" model="ir.ui.view">
+            <field name="name">kpi.tree.view</field>
+            <field name="model">kpi</field>
+            <field name="arch" type="xml">
+                <tree string="kpi" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="employee"/>
+                    <field name="id_employee"/>
+                    <field name="date_bs"/>
+                    <field name="objectives_bs"/>
+                    <field name="Job_Positions"/>
+                    <field name="Department"/>
+                    <field name="time_startbs"/>
+                    <field name="time_endbs"/>
+                    <field name="set_of_criteria_1"/>
+                    <field name="ot_bs"/>
+                    <field name="rule_bs"/>
+                    <field name="Absenteeism_rate"/>
+                    <field name="Work_attitude"/>
+                    <field name="Total_rating_score"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_kpi" model="ir.actions.act_window">
+            <field name="name">KPI</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kpi</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('kpi_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('kpi_form_view')})]"/>
+
+        </record>
+    </data>
+    ------------------------DEPARTMENT BUSINESS---------------------------------------
+    <data>
+        <record id="business_form_view" model="ir.ui.view">
+            <field name="name">business.form.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                            </group>
+                            <group>
+                                <field name="criteria_name"/>
+                            </group>
+                        </group>
+                        <group>
+                                <field name="target"/>
+                                <field name="Actual"/>
+                                <field name="per_Complete"/>
+                                <field name="Score"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="business_tree_view" model="ir.ui.view">
+            <field name="name">business.tree.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <tree string="business" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="criteria_name"/>
+                    <field name="target"/>
+                    <field name="Actual"/>
+                    <field name="per_Complete"/>
+                    <field name="Score"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_business" model="ir.actions.act_window">
+            <field name="name">business</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">business</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('business_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('business_form_view')})]"/>
+        </record>
+
+    </data>
+
+    --------------------------DEPARTMENT PRODUCT---------------------------------
+    <data>
+        <record id="kpi_product_form_view" model="ir.ui.view">
+            <field name="name">kpi.product.form.view</field>
+            <field name="model">kpi.product</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                            </group>
+                            <group>
+                                <field name="criteria_name"/>
+                            </group>
+                        </group>
+                        <group>
+                        <group>
+                                <field name="target"/>
+                                <field name="Actual"/>
+                                <field name="per_Complete"/>
+                                <field name="Score"/>
+
+                        </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="kpi_product_tree_view" model="ir.ui.view">
+            <field name="name">kpi.product.tree.view</field>
+            <field name="model">kpi.product</field>
+            <field name="arch" type="xml">
+                <tree string="kpi_product" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="criteria_name"/>
+                    <field name="criteria_name"/>
+                    <field name="target"/>
+                    <field name="Actual"/>
+                    <field name="per_Complete"/>
+                    <field name="Score"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_kpi_product" model="ir.actions.act_window">
+            <field name="name">kpi.product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kpi.product</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('kpi_product_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('kpi_product_form_view')})]"/>
+        </record>
+
+    </data>
+        --------------------------DEPARTMENT HR---------------------------------
+    <data>
+        <record id="kpi_hr_form_view" model="ir.ui.view">
+            <field name="name">kpi.hr.form.view</field>
+            <field name="model">kpi.hr</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                            </group>
+                            <group>
+                                <field name="criteria_name"/>
+                            </group>
+                        </group>
+                        <group>
+                                <field name="target"/>
+                                <field name="Actual"/>
+                                <field name="per_Complete"/>
+                                <field name="Score"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="kpi_hr_tree_view" model="ir.ui.view">
+            <field name="name">kpi.hr.tree.view</field>
+            <field name="model">kpi.hr</field>
+            <field name="arch" type="xml">
+                <tree string="kpi_hr" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="criteria_name"/>
+                    <field name="target"/>
+                    <field name="Actual"/>
+                    <field name="per_Complete"/>
+                    <field name="Score"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_kpi_hr" model="ir.actions.act_window">
+            <field name="name">kpi.hr</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kpi.hr</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('kpi_hr_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('kpi_hr_form_view')})]"/>
+        </record>
+
+    </data>
+</odoo>
+

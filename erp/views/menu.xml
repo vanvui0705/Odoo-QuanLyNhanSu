@@ -39,26 +39,10 @@
                   parent="emp_root_menu"
                   sequence="6"/>
 
-        <menuitem id="business_keypi_menu"
-                  name="Business Department"
+        <menuitem id="kpi_menu"
+                  name="Evaluation management"
                   parent="evaluation_management_menu"
-                  action="action_business_keypi"
-                  sequence="7"/>
-
-        <menuitem id="hr_keypi_menu"
-                  name="HR Department"
-                  parent="evaluation_management_menu"
-                  action="action_hr_keypi"
-                  sequence="8"/>
-        <menuitem id="production_keypi_menu"
-                  name="Production Department"
-                  parent="evaluation_management_menu"
-                  action="action_production_department_keypi"
-                  sequence="9"/>
-        <menuitem id="finance_keypi_menu"
-                  name="Finance Department"
-                  parent="evaluation_management_menu"
-                  action="action_finance_keypi"
+                  action="action_kpi"
                   sequence="10"/>
 
     </data>

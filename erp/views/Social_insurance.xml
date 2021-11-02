@@ -45,15 +45,17 @@
             <field name="model">social.insurance</field>
             <field name="arch" type="xml">
                 <tree string="social_insurance" default_order="create_date desc">
+                    <field name="id"/>
                     <field name="employee"/>
+                    <field name="id_employee" />
                     <field name="code_BHXH"/>
-                    <field name="code_BHYT"/>
                     <field name="Date_created"/>
                     <field name="Date_finish"/>
+                    <field name="code_BHYT"/>
                     <field name="Job_Positions"/>
                     <field name="detail"/>
-                    <field name="id"/>
-                    <field name="id_employee" />
+
+
 
                 </tree>
             </field>

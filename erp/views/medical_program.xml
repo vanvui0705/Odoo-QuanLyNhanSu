@@ -59,15 +59,17 @@
             <field name="model">medical.program</field>
             <field name="arch" type="xml">
                 <tree string="medical_program" default_order="create_date desc">
-                    <field name="medical_history"/>
+                    <field name="id"/>
                     <field name="employee"/>
+                    <field name="id_employee"/>
                     <field name="code_health"/>
                     <field name="Date_created"/>
                     <field name="Date_finish"/>
                     <field name="PHE"/>
                     <field name="medical_examination_program_participated"/>
-                    <field name="id"/>
-                    <field name="id_employee"/>
+                    <field name="medical_history"/>
+
+
 
                 </tree>
             </field>

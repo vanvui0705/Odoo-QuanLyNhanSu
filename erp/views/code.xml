@@ -76,11 +76,11 @@
          </record>
 
      </data>
-<!--<odoo>-->
+
     <data noupdate ="1">
-         <record id="business_keypi_id" model="ir.sequence">
+         <record id="kpi_product_id" model="ir.sequence">
              <field name="name">ID </field>
-             <field name="code">business_keypi.id</field>
+             <field name="code">kpi_product.id</field>
              <field name="prefix">MDT</field>
              <field name="padding">4</field>
              <field name="company_id" eval="False"/>
@@ -88,10 +88,12 @@
 
      </data>
 <!--<odoo>-->
+
+<!--<odoo>-->
     <data noupdate ="1">
-         <record id="hr_keypi_id" model="ir.sequence">
+         <record id="business_id" model="ir.sequence">
              <field name="name">ID </field>
-             <field name="code">hr_keypi.id</field>
+             <field name="code">business.id</field>
              <field name="prefix">MDT</field>
              <field name="padding">4</field>
              <field name="company_id" eval="False"/>
@@ -100,20 +102,20 @@
      </data>
     <!--<odoo>-->
     <data noupdate ="1">
-         <record id="finance_keypi_id" model="ir.sequence">
+         <record id="kpi_hr_id" model="ir.sequence">
              <field name="name">ID </field>
-             <field name="code">finance_keypi.id</field>
+             <field name="code">kpi_hr.id</field>
              <field name="prefix">MDT</field>
              <field name="padding">4</field>
              <field name="company_id" eval="False"/>
          </record>
 
      </data>
-      <!--<odoo>-->
+          <!--<odoo>-->
     <data noupdate ="1">
-         <record id="production_department_keypi_id" model="ir.sequence">
+         <record id="kpi_id" model="ir.sequence">
              <field name="name">ID </field>
-             <field name="code">production_department_keypi.id</field>
+             <field name="code">kpi.id</field>
              <field name="prefix">MDT</field>
              <field name="padding">4</field>
              <field name="company_id" eval="False"/>
