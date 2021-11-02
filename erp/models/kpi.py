@@ -39,9 +39,9 @@ class kpi(models.Model):
         ('Bad', 'Bad')],
         string='Work attitude', default='Good')
     Total_rating_score = fields.Integer("Medium score", default='0')
-    set_of_criteria_1 = fields.Many2many(comodel_name='business', string='')
-    set_of_criteria_2 = fields.Many2many(comodel_name='kpi.product', string='')
-    set_of_criteria_3 = fields.Many2many(comodel_name='kpi.hr', string='')
+    set_of_criteria_1 = fields.One2many(comodel_name='business', inverse_name='id')
+    set_of_criteria_2 = fields.One2many(comodel_name='kpi.product', inverse_name='id')
+    set_of_criteria_3 = fields.One2many(comodel_name='kpi.hr', inverse_name='id')
 
 class business(models.Model):
     _name = "business"
