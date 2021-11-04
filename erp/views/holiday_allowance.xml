@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="holiday_allowance_form_view" model="ir.ui.view">
+            <field name="name">holiday.allowance.form.view</field>
+            <field name="model">holiday.allowance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="employee" string="Employee" class="oe_edit_only"/>
+                            <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
+                            <label for="employee" string="ID Employee" />
+                            <field name="id_employee" />
+
+                        </div>
+<!--                        <group>-->
+<!--                            <field name="id_employee"  string="ID Employee"/>-->
+<!--                        </group>-->
+
+                      <group>
+                        <notebook>
+                            <page name="assistant_holiday" string="Assistant for Holiday">
+                            <group>
+
+                                <field name="assistant_holiday"/>
+
+                            </group>
+                            </page>
+                            <page name="assistant_dateoff" string="Assistant for date-off">
+                            <group>
+
+                                <field name="assistant_dateoff"/>
+
+                            </group>
+                            </page>
+                        </notebook>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="holiday_allowance_tree_view" model="ir.ui.view">
+            <field name="name">holiday.allowance.tree.view</field>
+            <field name="model">holiday.allowance</field>
+            <field name="arch" type="xml">
+                <tree string="holiday_allowance" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="employee"/>
+                    <field name="assistant_holiday"/>
+                    <field name="assistant_dateoff"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_holiday_allowance" model="ir.actions.act_window">
+            <field name="name">Holiday Allowance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">holiday.allowance</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('holiday_allowance_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('holiday_allowance_form_view')})]"/>
+
+        </record>
+    </data>
+
+  ------------------------
+
+    <data>
+        <record id="assistant_holiday_form_view" model="ir.ui.view">
+            <field name="name">assistant.holiday.form.view</field>
+            <field name="model">assistant.holiday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                                <field name="holiday_name"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="assistant"/>
+                                <field name="Support_for_vacation_expenses"/>
+                                <field name="time_offset"/>
+
+                            </group>
+                        </group>
+                      <group>
+                          <field name="note"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="assistant_holiday_tree_view" model="ir.ui.view">
+            <field name="name">assistant.holiday.tree.view</field>
+            <field name="model">assistant.holiday</field>
+            <field name="arch" type="xml">
+                <tree string="assistant_holiday" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="holiday_name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="assistant"/>
+                    <field name="Support_for_vacation_expenses"/>
+                    <field name="time_offset"/>
+<!--                    <field name="id_employee"/>-->
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_assistant_holiday" model="ir.actions.act_window">
+            <field name="name">assistant.holiday</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">assistant.holiday</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('assistant_holiday_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('assistant_holiday_form_view')})]"/>
+
+        </record>
+    </data>
+---------------------------------------------------------
+    <data>
+        <record id="assistant_dateoff_form_view" model="ir.ui.view">
+            <field name="name">assistant.dateoff.form.view</field>
+            <field name="model">assistant.dateoff</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="id"/>
+                                <field name="total_number_of_holidays_per_year"/>
+                                <field name="number_of_days_off"/>
+                                <field name="remaining_eave_days"/>
+                            </group>
+                            <group>
+                                <field name="assistant"/>
+                                <field name="Support_for_vacation_expenses"/>
+                            </group>
+                        </group>
+                      <group>
+                          <field name="note"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="assistant_dateoff_tree_view" model="ir.ui.view">
+            <field name="name">assistant.dateoff.tree.view</field>
+            <field name="model">assistant.dateoff</field>
+            <field name="arch" type="xml">
+                <tree string="assistant_dateoff" default_order="create_date desc">
+                    <field name="id"/>
+                    <field name="total_number_of_holidays_per_year"/>
+                    <field name="number_of_days_off"/>
+                    <field name="remaining_eave_days"/>
+                    <field name="assistant"/>
+                    <field name="Support_for_vacation_expenses"/>
+                    <field name="note"/>
+<!--                    <field name="id_employee"/>-->
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_assistant_dateoff" model="ir.actions.act_window">
+            <field name="name">assistant.dateoff</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">assistant.dateoff</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('assistant_dateoff_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('assistant_dateoff_form_view')})]"/>
+
+        </record>
+    </data>
+</odoo>
+
+
+
+
