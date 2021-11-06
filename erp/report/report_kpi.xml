@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="kpi_report" model="ir.actions.report">
+            <field name="name">KPI Report </field>
+            <field name="model">kpi</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">erp.kpiemployee_report</field>
+            <field name="report_file">erp.kpiemployee_report</field>
+<!--            <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)</field>-->
+<!--            <field name="binding_model_id" ref="model_kpi"/>-->
+<!--            <field name="binding_type">report</field>-->
+        </record>
+      </data>
+  </odoo>
+

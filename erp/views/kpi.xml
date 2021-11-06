@@ -146,9 +146,9 @@
                     <sheet>
 
                         <group>
-                            <group>
-                                <field name="id"/>
-                            </group>
+<!--                            <group>-->
+<!--                                <field name="id"/>-->
+<!--                            </group>-->
                             <group>
                                 <field name="criteria_name"/>
                             </group>
@@ -170,7 +170,7 @@
             <field name="model">business</field>
             <field name="arch" type="xml">
                 <tree string="business" default_order="create_date desc">
-                    <field name="id"/>
+<!--                    <field name="id"/>-->
                     <field name="criteria_name"/>
                     <field name="target"/>
                     <field name="Actual"/>

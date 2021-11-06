@@ -39,23 +39,30 @@ class kpi(models.Model):
         ('Bad', 'Bad')],
         string='Work attitude', default='Good')
     Total_rating_score = fields.Integer("Medium score", default='0')
-    set_of_criteria_1 = fields.One2many(comodel_name='business', inverse_name='id')
-    set_of_criteria_2 = fields.One2many(comodel_name='kpi.product', inverse_name='id')
-    set_of_criteria_3 = fields.One2many(comodel_name='kpi.hr', inverse_name='id')
+    set_of_criteria_1 = fields.Many2many(comodel_name='business', inverse_name='id')
+    set_of_criteria_2 = fields.Many2many(comodel_name='kpi.product', inverse_name='id')
+    set_of_criteria_3 = fields.Many2many(comodel_name='kpi.hr', inverse_name='id')
+
+    # def print_report(self):
+    #     data = {
+    #
+    #     }
+    #     # docids = self.env['sale.order'].search([]).ids
+    #     return self.env.ref('erp.kpiemployee_report').report_action(None, data=data)
 
 class business(models.Model):
     _name = "business"
     _description = "HR Management"
 
 
-    id = fields.Char(string='ID', required=True, copy=False, readonly=True,
-                         default=lambda seft: ('New'))
-    @api.model
-    def create(self, vals):
-        if vals.get('id', ('New')) == ('New'):
-            vals['id'] = self.env['ir.sequence'].next_by_code('business.id') or ('New')
-        res = super(business, self).create(vals)
-        return res
+    # id = fields.Char(string='ID', required=True, copy=False, readonly=True,
+    #                      default=lambda seft: ('New'))
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get('id', ('New')) == ('New'):
+    #         vals['id'] = self.env['ir.sequence'].next_by_code('business.id') or ('New')
+    #     res = super(business, self).create(vals)
+    #     return res
 
     criteria_name = fields.Selection([
         ('revenue', 'Revenue'),

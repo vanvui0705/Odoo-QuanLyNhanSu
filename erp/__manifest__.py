@@ -23,6 +23,9 @@
         'views/holiday_allowance.xml',
         'views/kpi.xml',
         'views/menu.xml',
+        'report/kpi_report_employee.xml',
+        'report/report_kpi.xml',
+
 
     ],
     # 'qweb': ['static/src/xml/*.xml'],

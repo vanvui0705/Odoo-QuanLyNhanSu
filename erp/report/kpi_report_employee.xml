@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="kpiemployee_report">
+    <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="o">
+           <div class="page">
+               <div class="oe_structure"/>
+                   <div class="col-xs-8">
+                           <tr>
+                              <td width="100%">
+                                 <table>
+                                      <tr>
+                                          <td>
+                                             <span>
+                                                 <strong>Name employee:</strong>
+                                             </span>
+                                         </td>
+                                         <td colspan="6" class="hr.employee">
+                                             <span t-field="o.employee"/>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                          <td>
+                                             <span>
+                                                 <strong>ID Employee:</strong>
+                                             </span>
+                                         </td>
+                                         <td colspan="6" class="kpi">
+                                             <span t-field="o.id_employee"/>
+                                         </td>
+                                     </tr>
+                                      <tr>
+                                          <td>
+                                             <span>
+                                                 <strong>Time of creation:</strong>
+                                             </span>
+                                         </td>
+                                         <td colspan="6" class="kpi">
+                                             <span t-field="o.date_bs"/>
+                                         </td>
+                                     </tr>
+                              <tr>
+                                           <td>
+                                             <span>
+                                                 <strong>Evaluation start time:</strong>
+                                             </span>
+                                             </td>
+                                         <td colspan="6" class="kpi">
+                                             <span t-field="o.time_startbs"/>
+                                         </td>
+                                  <td>
+                                             <span>
+                                                 <strong>Evaluation end time:</strong>
+                                             </span>
+                                         </td>
+                                         <td colspan="6" class="kpi">
+                                             <span t-field="o.time_endbs"/>
+                                         </td>
+                              </tr>
+                                 <tr>
+                                            <td>
+                                             <span>
+                                                 <strong>Job Positions:</strong>
+                                             </span>
+                                         </td>
+                                         <td colspan="6" class="kpi">
+                                             <span t-field="o.Job_Positions"/>
+                                         </td>
+                                     <td>
+                                     <span>
+                                    <strong>Department:</strong>
+                                  </span>
+                                </td>
+                               <td colspan="6" class="kpi">
+                                <span t-field="o.Department"/>
+                                </td>
+                             </tr>
+                               <tr>
+                                   <td>
+                                     <span>
+                                    <strong>Assessment objectives:</strong>
+                                  </span>
+                                </td>
+                               <td colspan="6" class="kpi">
+                                <span t-field="o.objectives_bs"/>
+                                </td>
+                         </tr>
+
+                                 </table>
+                              </td>
+                           </tr>
+                   </div>
+               </div>
+            <br/>
+
+  <table class="table table-sm">
+                 <tr>
+                 <td>
+                <span>
+               <strong>Overtimes hours:</strong>
+              </span>
+                 </td>
+                    <td colspan="10" class="kpi">
+                    <span t-field="o.ot_bs"/>
+                     </td>
+                   </tr>
+                  </table>
+  <table class="table table-sm">
+                 <tr>
+                 <td>
+                <span>
+               <strong>Number of rule violation:</strong>
+              </span>
+                 </td>
+                    <td colspan="10" class="kpi">
+                    <span t-field="o.rule_bs"/>
+                     </td>
+                   </tr>
+                  </table>
+  <table class="table table-sm">
+                 <tr>
+                 <td>
+                <span>
+               <strong>Number of absences:</strong>
+              </span>
+                 </td>
+                    <td colspan="10" class="kpi">
+                    <span t-field="o.Absenteeism_rate"/>
+                     </td>
+                   </tr>
+                  </table>
+  <table class="table table-sm">
+                 <tr>
+                 <td>
+                <span>
+               <strong>Work attitude:</strong>
+              </span>
+                 </td>
+                    <td colspan="10" class="kpi">
+                    <span t-field="o.Work_attitude"/>
+                     </td>
+                   </tr>
+                  </table>
+
+            <t t-if="o.set_of_criteria_1">
+                <span>set of criteria 1</span>
+                <table class="business" name="business">
+                    <thead>
+                        <tr>
+                            <th name="id" class="business">
+                                <span>STT</span>
+                            </th>
+                             <th name="criteria_name" class="business">
+                                <span>Criteria name</span>
+                            </th>
+                            <th name="target" class="business">
+                                <span>Target</span>
+                            </th>
+                            <th name="Actual" class="business">
+                                <span>Actual</span>
+                            </th>
+                            <th name="per_Complete" class="business">
+                                <span>Percent complete</span>
+                            </th>
+                            <th name="Score" class="business">
+                                <span>Score</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-set="order_count" t-value="0"/>
+                    <t t-foreach="o.set_of_criteria_1" t-as="line">
+                        <t t-set="order_count" t-value="order_count +1"/>
+                        <tr>
+                            <td>
+                                <span t-field="line.id"/>
+                            </td>
+                             <td>
+                                <span t-field="line.criteria_name"/>
+                            </td>
+                             <td>
+                                <span t-field="line.target"/>
+                            </td>
+                             <td>
+                                <span t-field="line.Actual"/>
+                            </td>
+                             <td>
+                                <span t-field="line.per_Complete"/>
+                            </td>
+                             <td>
+                                <span t-field="line.Score"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+
+  <table class="table table-sm">
+                 <tr>
+                 <td>
+                <span>
+               <strong>Medium score:</strong>
+              </span>
+                 </td>
+                    <td colspan="1" class="kpi">
+                    <span t-field="o.Total_rating_score"/>
+                     </td>
+                   </tr>
+                  </table>
+        </t>
+    </t>
+     </t>
+</template>
+</odoo>
