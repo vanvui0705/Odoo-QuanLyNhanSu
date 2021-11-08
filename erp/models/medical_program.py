@@ -9,7 +9,7 @@ class medical_program(models.Model):
 
     employee = fields.Many2one('hr.employee', 'name', Required=True)
     id_employee = fields.Char('ID Employee', required=True)
-    code_health = fields.Char('ID Health insurance', required=True)
+    # code_health = fields.Char('ID Health insurance', required=True)
     Date_created = fields.Date('Date created', required=False)
     Date_finish = fields.Date('Date finish', required=False)
     PHE = fields.Selection([

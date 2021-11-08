@@ -14,19 +14,29 @@ class holiday_allowance(models.Model):
 
 
 
+class holiday_name(models.Model):
+        _name = "holiday.name"
+        _description = ""
+        _order = 'name'
+
+        name = fields.Char( required=True,string='Holiday name')
+
+
+class support_type(models.Model):
+        _name = "support.type"
+        _description = ""
+        _order = 'name'
+
+        name = fields.Char( required=True, string='Support type')
+
+
+
 class assistant_holiday(models.Model):
         _name = "assistant.holiday"
         _description = ""
 
 
-        holiday_name = fields.Selection([
-            ('new Year', 'new Year'),
-            ('Lunar New Year', 'Lunar New Year'),
-            ('Victory Day', 'Victory Day'),
-            ('Labor International', 'Labor International'),
-            ('National Day', 'National Day'),
-            ('The death anniversary of the hero king', 'The death anniversary of the hero king')
-        ], string='Holiday_Type', default='new Year')
+        holiday_name = fields.Many2one('holiday.name', 'name',Required=True, delegate=True )
         date_from = fields.Date(
             'Start Date', required=True)
         date_to = fields.Date(
@@ -35,11 +45,7 @@ class assistant_holiday(models.Model):
             'Time offset', required=True)
         assistant = fields.Integer('Assistant', default=500000)
         note = fields.Text('Note')
-        Support_for_vacation_expenses = fields.Selection([
-            ('Train tickets', 'Train tickets'),
-            ('Plane ticket', 'Plane ticket'),
-            ('Bus ticket', 'Bus ticket')
-        ], string='Support_Type', default='Train tickets')
+        Support_for_vacation_expenses = fields.Many2one('support.type', 'name', Required=True, delegate=True)
 
         id = fields.Char(string='ID', required=True, copy=False, readonly=True,
                          default=lambda seft: _('New'))

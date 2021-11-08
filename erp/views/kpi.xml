@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+
         <record id="kpi_form_view" model="ir.ui.view">
             <field name="name">kpi.form.view</field>
             <field name="model">kpi</field>
@@ -150,7 +151,7 @@
 <!--                                <field name="id"/>-->
 <!--                            </group>-->
                             <group>
-                                <field name="criteria_name"/>
+                                <field name="criteria_name" string="Criteria name"/>
                             </group>
                         </group>
                         <group>
@@ -207,7 +208,7 @@
                                 <field name="id"/>
                             </group>
                             <group>
-                                <field name="criteria_name"/>
+                                <field name="criteria_name" string="Criteria name"/>
                             </group>
                         </group>
                         <group>
@@ -230,7 +231,6 @@
             <field name="arch" type="xml">
                 <tree string="kpi_product" default_order="create_date desc">
                     <field name="id"/>
-                    <field name="criteria_name"/>
                     <field name="criteria_name"/>
                     <field name="target"/>
                     <field name="Actual"/>
@@ -266,7 +266,7 @@
                                 <field name="id"/>
                             </group>
                             <group>
-                                <field name="criteria_name"/>
+                                <field name="criteria_name" string="Criteria name"/>
                             </group>
                         </group>
                         <group>
@@ -287,7 +287,7 @@
             <field name="arch" type="xml">
                 <tree string="kpi_hr" default_order="create_date desc">
                     <field name="id"/>
-                    <field name="criteria_name"/>
+<!--                    <field name="criteria_name"/>-->
                     <field name="target"/>
                     <field name="Actual"/>
                     <field name="per_Complete"/>
@@ -305,6 +305,147 @@
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('kpi_hr_tree_view')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('kpi_hr_form_view')})]"/>
+        </record>
+
+    </data>
+ --------------------------------------------------------------------------------
+    <data>
+                <record id="view_criteria_filter" model="ir.ui.view">
+            <field name="name">criteria.search</field>
+            <field name="model">criteria</field>
+            <field name="arch" type="xml">
+                <search string="Criteria">
+                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
+
+                </search>
+             </field>
+        </record>
+        <record id="criteria_form_view" model="ir.ui.view">
+            <field name="name">criteria.form.view</field>
+            <field name="model">criteria</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="criteria_tree_view" model="ir.ui.view">
+            <field name="name">criteria.tree.view</field>
+            <field name="model">criteria</field>
+            <field name="arch" type="xml">
+                <tree string="kpi_hr" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_criteria" model="ir.actions.act_window">
+            <field name="name">criteria</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">criteria</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('criteria_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('criteria_form_view')})]"/>
+        </record>
+
+    </data>
+    -------------------------------------------------
+        <data>
+                <record id="view_criteria_1_filter" model="ir.ui.view">
+            <field name="name">criteria.1.search</field>
+            <field name="model">criteria.1</field>
+            <field name="arch" type="xml">
+                <search string="Criteria">
+                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
+
+                </search>
+             </field>
+        </record>
+        <record id="criteria_1_form_view" model="ir.ui.view">
+            <field name="name">criteria.1.form.view</field>
+            <field name="model">criteria.1</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="criteria_1_tree_view" model="ir.ui.view">
+            <field name="name">criteria.1.tree.view</field>
+            <field name="model">criteria.1</field>
+            <field name="arch" type="xml">
+                <tree string="kpi_hr" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_criteria_1" model="ir.actions.act_window">
+            <field name="name">criteria.1</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">criteria.1</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('criteria_1_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('criteria_1_form_view')})]"/>
+        </record>
+
+    </data>
+    ------------------------------------------------
+        <data>
+                <record id="view_criteria_2_filter" model="ir.ui.view">
+            <field name="name">criteria.2.search</field>
+            <field name="model">criteria.2</field>
+            <field name="arch" type="xml">
+                <search string="Criteria">
+                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
+
+                </search>
+             </field>
+        </record>
+        <record id="criteria_2_form_view" model="ir.ui.view">
+            <field name="name">criteria.2.form.view</field>
+            <field name="model">criteria.2</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="criteria_2_tree_view" model="ir.ui.view">
+            <field name="name">criteria.2.tree.view</field>
+            <field name="model">criteria.2</field>
+            <field name="arch" type="xml">
+                <tree string="kpi_hr" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_criteria_2" model="ir.actions.act_window">
+            <field name="name">criteria.2</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">criteria.2</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('criteria_2_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('criteria_2_form_view')})]"/>
         </record>
 
     </data>

@@ -81,13 +81,13 @@
                         <group>
                             <group>
                                 <field name="id"/>
-                                <field name="holiday_name"/>
+                                <field name="holiday_name" string="Holiday name"/>
                                 <field name="date_from"/>
                                 <field name="date_to"/>
                             </group>
                             <group>
                                 <field name="assistant"/>
-                                <field name="Support_for_vacation_expenses"/>
+                                <field name="Support_for_vacation_expenses" string="Support type"/>
                                 <field name="time_offset"/>
 
                             </group>
@@ -186,6 +186,101 @@
                 (0, 0, {'view_mode': 'form', 'view_id': ref('assistant_dateoff_form_view')})]"/>
 
         </record>
+    </data>
+    --------------------------------------------------------
+            <data>
+                <record id="view_holiday_name_filter" model="ir.ui.view">
+            <field name="name">holiday.name.search</field>
+            <field name="model">holiday.name</field>
+            <field name="arch" type="xml">
+                <search string="Holiday name">
+                    <field name="name" string="Holiday name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
+
+                </search>
+             </field>
+        </record>
+        <record id="holiday_name_form_view" model="ir.ui.view">
+            <field name="name">holiday.name.form.view</field>
+            <field name="model">holiday.name</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="holiday_name_tree_view" model="ir.ui.view">
+            <field name="name">holiday.name.tree.view</field>
+            <field name="model">holiday.name</field>
+            <field name="arch" type="xml">
+                <tree string="holiday_name" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_holiday_name" model="ir.actions.act_window">
+            <field name="name">Holiday name</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">holiday.name</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('holiday_name_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('holiday_name_form_view')})]"/>
+        </record>
+
+    </data>
+
+    --------------------------------------------------
+                <data>
+                <record id="view_support_type_filter" model="ir.ui.view">
+            <field name="name">support.type.search</field>
+            <field name="model">support.type</field>
+            <field name="arch" type="xml">
+                <search string="Support Type">
+                    <field name="name" string="Support Type" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
+
+                </search>
+             </field>
+        </record>
+        <record id="support_type_form_view" model="ir.ui.view">
+            <field name="name">support.type.form.view</field>
+            <field name="model">support.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="support_type_tree_view" model="ir.ui.view">
+            <field name="name">support.type.tree.view</field>
+            <field name="model">support.type</field>
+            <field name="arch" type="xml">
+                <tree string="Support_Type" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_support_type" model="ir.actions.act_window">
+            <field name="name">Support Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">support.type</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('support_type_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('support_type_form_view')})]"/>
+        </record>
+
     </data>
 </odoo>
 

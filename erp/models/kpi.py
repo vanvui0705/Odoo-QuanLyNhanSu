@@ -8,7 +8,7 @@ class kpi(models.Model):
     _description = "HR Management"
 
 
-    employee = fields.Many2one('hr.employee', 'name', Required=True)
+    employee = fields.Many2one('hr.employee', 'name', Required=True,)
     id_employee = fields.Char('ID Employee', required=True)
     # id_bs = fields.Integer("ID", default='1')
     id = fields.Char(string='ID', required=True, copy=False, readonly=True,
@@ -64,14 +64,7 @@ class business(models.Model):
     #     res = super(business, self).create(vals)
     #     return res
 
-    criteria_name = fields.Selection([
-        ('revenue', 'Revenue'),
-        ('customers_number', 'Customers number'),
-        ('number_of_satisfied_customers', 'Number of satisfied customers'),
-        ('monthly_sales_growth ', 'Monthly Sales Growth '),
-        ('quote_to_close_ratio ', 'Quote To Close Ratio ')],
-        string='Criteria name', default='revenue')
-
+    criteria_name = fields.Many2one('criteria.2', 'name', Required=True, delegate=True)
     target = fields.Integer("Target", default='')
     Actual = fields.Integer("Actual", default='')
     per_Complete = fields.Integer("Percent complete", default='')
@@ -94,14 +87,7 @@ class kpi_product(models.Model):
         res = super(kpi_product, self).create(vals)
         return res
 
-    criteria_name = fields.Selection([
-        ('Number of products produced', 'Number of products produced'),
-        ('rate of damaged products', 'Rate of damaged products '),
-        ('Raw material usage norms', 'Raw material usage norms '),
-        ('Allowable material consumption rate', 'Allowable material consumption rate '),
-        ('Material damage rate', 'Material damage rate'),
-    ],
-        string='Criteria name', default='Number of products produced')
+    criteria_name = fields.Many2one('criteria.1', 'name', Required=True,delegate=True)
     target = fields.Integer("Target", default='')
     Actual = fields.Integer("Actual", default='')
     per_Complete = fields.Integer("Percent complete", default='')
@@ -122,14 +108,7 @@ class kpi_hr(models.Model):
             vals['id'] = self.env['ir.sequence'].next_by_code('kpi_hr.id') or ('New')
         res = super(kpi_hr, self).create(vals)
         return res
-    criteria_name = fields.Selection([
-        ('Number of Curriculum Vitae', 'Number of Curriculum Vitae'),
-        ('Interview rate/total number of CVs', 'Interview rate/total number of CVs '),
-        ('Recruiting conversion rate', 'Recruiting conversion rate '),
-        ('Employee complaint rate', 'Employee complaint rate '),
-        ('Accuracy rate of salary payment report', 'Accuracy rate of salary payment report'),
-    ],
-        string='Criteria name', default='Number of Curriculum Vitae')
+    criteria_name = fields.Many2one('criteria', 'name', Required=True)
     target = fields.Integer("Target", default='')
     Actual = fields.Integer("Actual", default='')
     per_Complete = fields.Integer("Percent complete", default='')
@@ -137,7 +116,27 @@ class kpi_hr(models.Model):
 
 
 
+class criteria(models.Model):
+    _name = "criteria"
+    _description = " "
+    _order = 'name'
 
+    name = fields.Char('Criteria name', store=True, readonly=False, tracking=True)
+
+
+class criteria_1(models.Model):
+    _name = "criteria.1"
+    _description = " "
+    _order = 'name'
+
+    name = fields.Char('Criteria name', store=True, readonly=False, tracking=True)
+
+class criteria_2(models.Model):
+    _name = "criteria.2"
+    _description = " "
+    _order = 'name'
+
+    name = fields.Char('Criteria name', store=True, readonly=False, tracking=True)
 
 
 

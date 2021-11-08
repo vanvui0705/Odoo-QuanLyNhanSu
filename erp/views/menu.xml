@@ -9,7 +9,11 @@
                   parent="emp_root_menu"
                   action="action_employee_program"
                   sequence="1"/>
-
+<!--        <menuitem id="criteria_menu"-->
+<!--                  name="Criteria_HR"-->
+<!--                  parent="employee_menu"-->
+<!--                  action="action_criteria"-->
+<!--                  sequence="1"/>-->
         <menuitem id="benefits_management_menu"
                   name="Benefits management"
                   parent="emp_root_menu"

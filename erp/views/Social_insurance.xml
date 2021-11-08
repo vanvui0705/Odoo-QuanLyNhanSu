@@ -16,12 +16,12 @@
                         <group>
                             <group>
                                 <field name="id"/>
-                                <field name="code_BHYT"/>
+<!--                                <field name="code_BHYT"/>-->
                                 <field name="Job_Positions"/>
                             </group>
                             <group>
 
-                                <field name="code_BHXH"/>
+<!--                                <field name="code_BHXH"/>-->
                                 <field name="Date_created"/>
                                 <field name="Date_finish"/>
                             </group>
@@ -48,10 +48,10 @@
                     <field name="id"/>
                     <field name="employee"/>
                     <field name="id_employee" />
-                    <field name="code_BHXH"/>
+<!--                    <field name="code_BHXH"/>-->
                     <field name="Date_created"/>
                     <field name="Date_finish"/>
-                    <field name="code_BHYT"/>
+<!--                    <field name="code_BHYT"/>-->
                     <field name="Job_Positions"/>
                     <field name="detail"/>
 

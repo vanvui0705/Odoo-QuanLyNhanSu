@@ -24,7 +24,7 @@
                                 <field name="PHE"/>
                             </group>
                             <group>
-                                <field name="code_health"/>
+<!--                                <field name="code_health"/>-->
                                 <field name="Date_created"/>
                                 <field name="Date_finish"/>
 
@@ -62,7 +62,7 @@
                     <field name="id"/>
                     <field name="employee"/>
                     <field name="id_employee"/>
-                    <field name="code_health"/>
+<!--                    <field name="code_health"/>-->
                     <field name="Date_created"/>
                     <field name="Date_finish"/>
                     <field name="PHE"/>
