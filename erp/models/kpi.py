@@ -9,7 +9,7 @@ class kpi(models.Model):
 
 
     employee = fields.Many2one('hr.employee', 'name', Required=True,)
-    id_employee = fields.Char('ID Employee', required=True)
+    # id_employee = fields.Char('ID Employee', required=True)
     # id_bs = fields.Integer("ID", default='1')
     id = fields.Char(string='ID', required=True, copy=False, readonly=True,
                          default=lambda seft: ('New'))

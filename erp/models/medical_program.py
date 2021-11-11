@@ -8,10 +8,10 @@ class medical_program(models.Model):
     _description = ""
 
     employee = fields.Many2one('hr.employee', 'name', Required=True)
-    id_employee = fields.Char('ID Employee', required=True)
+    # id_employee = fields.Char('ID Employee', required=True)
     # code_health = fields.Char('ID Health insurance', required=True)
-    Date_created = fields.Date('Date created', required=False)
-    Date_finish = fields.Date('Date finish', required=False)
+    Date_created = fields.Date('Date created BHYT', required=False)
+    Date_finish = fields.Date('Date finish BHYT ', required=False)
     PHE = fields.Selection([
         ('part 1', 'part 1'),
         ('part 2', 'part 2')
@@ -70,7 +70,17 @@ class medical_history(models.Model):
         res = super(medical_history, self).create(vals)
         return res
     Date = fields.Date('Time', required=False)
-    Location = fields.Text(' Location')
+    medical_Center = fields.Selection([
+        ('Bệnh viện Đa khoa Hoàn Mỹ Đà Nẵng', 'Bệnh viện Đa khoa Hoàn Mỹ Đà Nẵng'),
+        ('Bệnh viện Đa khoa Bình Dân', 'Bệnh viện Đa khoa Bình Dân'),
+        ('Bệnh viện Y học cổ truyền Đà Nẵng', 'Bệnh viện Y học cổ truyền Đà Nẵng'),
+        ('Bệnh Viện Điều Dưỡng Phục Hồi Chức Năng', 'Bệnh Viện Điều Dưỡng Phục Hồi Chức Năng'),
+        ('Bệnh Viện Da Liễu', 'Bệnh Viện Da Liễu'),
+        ('Bệnh Viện Tâm Thần Hòa Khánh', 'Bệnh Viện Tâm Thần Hòa Khánh'),
+        ('Bệnh viện Giao thông vận tải Đà Nẵng', 'Bệnh viện Giao thông vận tải Đà Nẵng'),
+        ('Bệnh viện Mắt Đà Nẵng', 'Bệnh viện Mắt Đà Nẵng'),
+        ('Bệnh viện C Đà Nẵng', 'Bệnh viện C Đà Nẵng'),
+    ], string='Medical Center', default='Bệnh viện Đa khoa Hoàn Mỹ Đà Nẵng')
     Content = fields.Text(' Content')
 
 

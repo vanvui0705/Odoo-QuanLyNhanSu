@@ -8,7 +8,7 @@ class holiday_allowance(models.Model):
     _description = ""
 
     employee = fields.Many2one('hr.employee', 'name', Required=True)
-    id_employee = fields.Char('ID Employee', required=True)
+    # id_employee = fields.Char('ID Employee', required=True)
     assistant_holiday = fields.Many2many(comodel_name='assistant.holiday')
     assistant_dateoff = fields.One2many(comodel_name='assistant.dateoff',inverse_name='id')
 
@@ -58,7 +58,12 @@ class assistant_holiday(models.Model):
             return res
 
 
+class support_type1(models.Model):
+    _name = "support.type1"
+    _description = ""
+    _order = 'name'
 
+    name = fields.Char(required=True, string='Support type')
 
 
 class assistant_dateoff(models.Model):
@@ -69,11 +74,7 @@ class assistant_dateoff(models.Model):
     number_of_days_off = fields.Integer('Number of day off', default=1)
     remaining_eave_days = fields.Integer('Remaining leave days', default=1)
     assistant = fields.Integer('Assistant', default=500000)
-    Support_for_vacation_expenses = fields.Selection([
-        ('Train tickets', 'Train tickets'),
-        ('Plane ticket', 'Plane ticket'),
-        ('Bus ticket', 'Bus ticket')
-    ], string='Support_Type', default='Train tickets')
+    Support_for_vacation_expenses = fields.Many2one('support.type', 'name', Required=True, delegate=True)
     note = fields.Text('Reason')
     id = fields.Char(string='ID', required=True, copy=False, readonly=True,
                      default=lambda seft: _('New'))

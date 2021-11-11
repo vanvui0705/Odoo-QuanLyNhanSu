@@ -11,8 +11,8 @@
                         <div class="oe_title">
                             <label for="employee" string="Employee" class="oe_edit_only"/>
                             <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
-                            <label for="employee" string="ID Employee" class="oe_edit_only"/>
-                            <field name="id_employee" />
+<!--                            <label for="employee" string="ID Employee" class="oe_edit_only"/>-->
+<!--                            <field name="id_employee" />-->
 
                         </div>
 <!--                        <group>-->
@@ -107,7 +107,7 @@
                 <tree string="kpi" default_order="create_date desc">
                     <field name="id"/>
                     <field name="employee"/>
-                    <field name="id_employee"/>
+<!--                    <field name="id_employee"/>-->
                     <field name="date_bs"/>
                     <field name="objectives_bs"/>
                     <field name="Job_Positions"/>
@@ -145,11 +145,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-
                         <group>
-<!--                            <group>-->
-<!--                                <field name="id"/>-->
-<!--                            </group>-->
                             <group>
                                 <field name="criteria_name" string="Criteria name"/>
                             </group>
@@ -310,16 +306,6 @@
     </data>
  --------------------------------------------------------------------------------
     <data>
-                <record id="view_criteria_filter" model="ir.ui.view">
-            <field name="name">criteria.search</field>
-            <field name="model">criteria</field>
-            <field name="arch" type="xml">
-                <search string="Criteria">
-                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
-
-                </search>
-             </field>
-        </record>
         <record id="criteria_form_view" model="ir.ui.view">
             <field name="name">criteria.form.view</field>
             <field name="model">criteria</field>
@@ -357,16 +343,6 @@
     </data>
     -------------------------------------------------
         <data>
-                <record id="view_criteria_1_filter" model="ir.ui.view">
-            <field name="name">criteria.1.search</field>
-            <field name="model">criteria.1</field>
-            <field name="arch" type="xml">
-                <search string="Criteria">
-                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
-
-                </search>
-             </field>
-        </record>
         <record id="criteria_1_form_view" model="ir.ui.view">
             <field name="name">criteria.1.form.view</field>
             <field name="model">criteria.1</field>
@@ -404,16 +380,6 @@
     </data>
     ------------------------------------------------
         <data>
-                <record id="view_criteria_2_filter" model="ir.ui.view">
-            <field name="name">criteria.2.search</field>
-            <field name="model">criteria.2</field>
-            <field name="arch" type="xml">
-                <search string="Criteria">
-                    <field name="name" string="Criteria name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
-
-                </search>
-             </field>
-        </record>
         <record id="criteria_2_form_view" model="ir.ui.view">
             <field name="name">criteria.2.form.view</field>
             <field name="model">criteria.2</field>

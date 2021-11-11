@@ -19,7 +19,7 @@
                                 <field name="Date"/>
                             </group>
                             <group>
-                                <field name="Location"/>
+                                <field name="medical_Center"/>
                             </group>
                         </group>
                         <group>
@@ -37,7 +37,7 @@
                 <tree string="medical_history" default_order="create_date desc">
                     <field name="id"/>
                     <field name="Date"/>
-                    <field name="Location"/>
+                    <field name="medical_Center"/>
                     <field name="Content"/>
 
 

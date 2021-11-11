@@ -10,8 +10,8 @@
                         <div class="oe_title">
                             <label for="employee" string="Employee" class="oe_edit_only"/>
                             <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
-                            <label for="employee" string="ID Employee" />
-                            <field name="id_employee" />
+<!--                            <label for="employee" string="ID Employee" />-->
+<!--                            <field name="id_employee" />-->
 
                         </div>
 <!--                        <group>-->
@@ -189,16 +189,7 @@
     </data>
     --------------------------------------------------------
             <data>
-                <record id="view_holiday_name_filter" model="ir.ui.view">
-            <field name="name">holiday.name.search</field>
-            <field name="model">holiday.name</field>
-            <field name="arch" type="xml">
-                <search string="Holiday name">
-                    <field name="name" string="Holiday name" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
 
-                </search>
-             </field>
-        </record>
         <record id="holiday_name_form_view" model="ir.ui.view">
             <field name="name">holiday.name.form.view</field>
             <field name="model">holiday.name</field>
@@ -237,16 +228,7 @@
 
     --------------------------------------------------
                 <data>
-                <record id="view_support_type_filter" model="ir.ui.view">
-            <field name="name">support.type.search</field>
-            <field name="model">support.type</field>
-            <field name="arch" type="xml">
-                <search string="Support Type">
-                    <field name="name" string="Support Type" filter_domain="['|', ('work_email', 'ilike', self), ('name', 'ilike', self)]"/>
 
-                </search>
-             </field>
-        </record>
         <record id="support_type_form_view" model="ir.ui.view">
             <field name="name">support.type.form.view</field>
             <field name="model">support.type</field>
@@ -279,6 +261,44 @@
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('support_type_tree_view')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('support_type_form_view')})]"/>
+        </record>
+
+    </data>
+    -----------------------------
+    <data>
+
+        <record id="support_type1_form_view" model="ir.ui.view">
+            <field name="name">support.type1.form.view</field>
+            <field name="model">support.type1</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="support_type1_tree_view" model="ir.ui.view">
+            <field name="name">support.type1.tree.view</field>
+            <field name="model">support.type1</field>
+            <field name="arch" type="xml">
+                <tree string="Support_Type" default_order="create_date desc">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_support_type1" model="ir.actions.act_window">
+            <field name="name">Support Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">support.type1</field>
+            <!-- <field name="view_type">form</field> --> <!-- Odoo 13 has removed this field -->
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('support_type1_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('support_type1_form_view')})]"/>
         </record>
 
     </data>

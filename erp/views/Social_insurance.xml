@@ -10,8 +10,8 @@
                         <div class="oe_title">
                             <label for="employee" string="Employee" class="oe_edit_only"/>
                             <h1><field name="employee" placeholder="e.g. Kittie"/></h1>
-                            <label for="employee" string="ID Employee" class="oe_edit_only"/>
-                            <field name="id_employee" />
+<!--                            <label for="employee" string="ID Employee" class="oe_edit_only"/>-->
+<!--                            <field name="id_employee" />-->
                         </div>
                         <group>
                             <group>
@@ -47,7 +47,7 @@
                 <tree string="social_insurance" default_order="create_date desc">
                     <field name="id"/>
                     <field name="employee"/>
-                    <field name="id_employee" />
+<!--                    <field name="id_employee" />-->
 <!--                    <field name="code_BHXH"/>-->
                     <field name="Date_created"/>
                     <field name="Date_finish"/>

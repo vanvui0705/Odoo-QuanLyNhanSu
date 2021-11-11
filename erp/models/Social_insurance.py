@@ -9,7 +9,7 @@ class social_insurance(models.Model):
 
 
     employee = fields.Many2one('hr.employee', 'name', Required=True)
-    id_employee = fields.Char('ID Employee', required=True)
+    # id_employee = fields.Char('ID Employee', required=True)
     # code_BHXH = fields.Char('ID Social insurance', required=True)
     # code_BHYT = fields.Char('ID Health insurance',required=True)
     Date_created = fields.Date('Date created', required=False)
